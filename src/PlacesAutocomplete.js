@@ -96,6 +96,8 @@ class PlacesAutocomplete extends React.Component {
         types: p.types,
       })),
     });
+
+    this.props.onSuggestionsReceived && this.props.onSuggestionsReceived(this.state.suggestions)
   };
 
   fetchPredictions = () => {
@@ -369,6 +371,7 @@ PlacesAutocomplete.propTypes = {
   children: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onSelect: PropTypes.func,
+  onSuggestionsReceived: PropTypes.func,
   searchOptions: PropTypes.shape({
     bounds: PropTypes.object,
     componentRestrictions: PropTypes.object,
